@@ -14,7 +14,12 @@
 </head>
 
 <body>
-    <div class="glow-bg"></div>
+    <div class="glow-bg">
+        <div class="glow-blob"></div>
+        <div class="glow-blob"></div>
+        <div class="glow-blob"></div>
+    </div>
+    <div class="grid-overlay"></div>
 
     <nav>
         <div class="nav-container">
@@ -34,9 +39,10 @@
 
     <header class="hero">
         <div class="hero-content">
-            <div class="badge-new">v0.2.1 est disponible ! ✨</div>
-            <h1>Pilotez vos projets <br>comme un <span class="gradient-text">Pro.</span></h1>
-            <p>Le hub ultime pour développeurs. Organisez vos espaces de travail, suivez vos roadmaps et lancez vos
+            <div class="badge-new fade-up">v0.2.1 est disponible ! ✨</div>
+            <h1 class="fade-up delay-1">Pilotez vos projets <br>comme un <span class="gradient-text">Pro.</span></h1>
+            <p class="fade-up delay-2">Le hub ultime pour développeurs. Organisez vos espaces de travail, suivez vos
+                roadmaps et lancez vos
                 scripts NPM dans une interface futuriste "Cosmic Neon".</p>
             <div class="hero-actions">
                 <a href="https://github.com/CodePilot-dev/CodePilot/releases/download/0.2.1/CodePilot.Setup.0.2.1.exe"
@@ -49,20 +55,54 @@
                 <a href="https://app.codepilot.drayko.xyz" target="_blank" class="secondary-btn">
                     Demo</a>
             </div>
-            <div class="hero-preview">
+            <div class="hero-preview fade-up delay-3">
                 <div class="preview-window">
                     <div class="preview-titlebar">
                         <div class="dots"><span></span><span></span><span></span></div>
                         <div class="preview-title">CodePilot - Mission Control</div>
                     </div>
                     <div class="preview-body">
-                        <div class="skeleton-sidebar"></div>
-                        <div class="skeleton-content">
-                            <div class="skeleton-header"></div>
-                            <div class="skeleton-grid">
-                                <div class="skeleton-card"></div>
-                                <div class="skeleton-card"></div>
-                                <div class="skeleton-card"></div>
+                        <div class="app-sidebar">
+                            <div class="app-nav-item active"></div>
+                            <div class="app-nav-item"></div>
+                            <div class="app-nav-item"></div>
+                            <div class="app-nav-item"></div>
+                        </div>
+                        <div class="app-content">
+                            <div class="app-header">
+                                <div class="app-h1"></div>
+                            </div>
+                            <div class="app-grid">
+                                <div class="app-card">
+                                    <div class="app-card-icon"></div>
+                                    <div class="app-card-line"></div>
+                                    <div class="app-card-line" style="width: 60%"></div>
+                                </div>
+                                <div class="app-card">
+                                    <div class="app-card-icon"></div>
+                                    <div class="app-card-line"></div>
+                                    <div class="app-card-line" style="width: 50%"></div>
+                                </div>
+                                <div class="app-card">
+                                    <div class="app-card-icon"></div>
+                                    <div class="app-card-line"></div>
+                                    <div class="app-card-line" style="width: 70%"></div>
+                                </div>
+                                <div class="app-card">
+                                    <div class="app-card-icon"></div>
+                                    <div class="app-card-line"></div>
+                                    <div class="app-card-line" style="width: 40%"></div>
+                                </div>
+                                <div class="app-card">
+                                    <div class="app-card-icon"></div>
+                                    <div class="app-card-line"></div>
+                                    <div class="app-card-line" style="width: 60%"></div>
+                                </div>
+                                <div class="app-card">
+                                    <div class="app-card-icon"></div>
+                                    <div class="app-card-line"></div>
+                                    <div class="app-card-line" style="width: 50%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -75,25 +115,25 @@
         <div class="container">
             <h2 class="section-title">Tout ce dont un <span class="accent-text">Dev</span> a besoin.</h2>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card fade-up">
                     <div class="feature-icon">🏷️</div>
                     <h3>Étiquettes & Labels</h3>
                     <p>Organisez vos projets par statut, framework ou priorité avec notre système de labels
                         personnalisables.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card fade-up delay-1">
                     <div class="feature-icon">📅</div>
                     <h3>Roadmap Interactive</h3>
                     <p>Ne perdez plus le fil. Planifiez vos prochaines étapes et marquez-les comme terminées en un clic.
                     </p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card fade-up delay-2">
                     <div class="feature-icon">⚡</div>
                     <h3>Scripts NPM</h3>
                     <p>Accès instantané à vos scripts package.json. Lancez-les directement depuis une grille
                         interactive.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card fade-up delay-3">
                     <div class="feature-icon">🎭</div>
                     <h3>Thèmes ".thmx"</h3>
                     <p>Appropriez-vous votre outil. Chargez vos propres fichiers de thèmes pour une expérience unique.
@@ -130,6 +170,23 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 
 </html>
